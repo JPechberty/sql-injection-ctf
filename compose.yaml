@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  webapp:
+    container_name: sql-inj-webapp
+    build: ./docker/franken
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/app
+      - caddy_data:/data
+      - caddy_config:/config
+      # comment the following line in production, it allows to have nice human-readable logs in dev
+    tty: true
+
+volumes:
+  caddy_data:
+  caddy_config:
