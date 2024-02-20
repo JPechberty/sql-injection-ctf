@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\ProductModel;
 use Studoo\EduFramework\Core\Controller\ControllerInterface;
 use Studoo\EduFramework\Core\Controller\Request;
 use Studoo\EduFramework\Core\View\TwigCore;
@@ -20,10 +21,18 @@ class HomeController implements ControllerInterface
      */
     public function execute(Request $request): string|null
     {
+        $productModel = new ProductModel();
+
+        if(isset($_GET['name']) && $_GET['name'] !== ''){
+            $products = $productModel->searchByName($_GET['name']);
+
+        }
+
         return TwigCore::getEnvironment()->render('home/home.html.twig',
             [
-                'titre'   => 'Hello World !',
-                'requete' => $request
+                'titre'   => 'Stock Observer',
+                'requete' => $request,
+                'products'=> $products ?? null
             ]
         );
     }

@@ -1,8 +1,48 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ titre }}{% endblock %}
+{% block title %}{{ parent() }}{{ titre }}{% endblock %}
 
 {% block content %}
-    <h1>{{ titre }}</h1>
+    <h1>The Fair Store</h1>
+    <h2>{{ titre }}</h2>
+    <form method="get" action="/">
+        <fieldset>
+            <label>
+                Product Name
+                <input
+                        name="name"
+                        placeholder="ExNihilo ...."
+                />
+            </label>
+        </fieldset>
+
+        <input type="submit" value="Search"/>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Online Stock</th>
+            <th scope="col">In store Stock</th>
+            <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in products %}
+            <tr>
+                <th scope="row">{{ p.code }}</th>
+                <td>{{ p.name }}</td>
+                <td>{{ p.type }}</td>
+                <td>{{ p.onlineStock }}</td>
+                <td>{{ p.inStoreStock }}</td>
+                <td>{{ p.sellingPrice }} €</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}
 
