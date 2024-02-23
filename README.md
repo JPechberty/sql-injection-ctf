@@ -33,5 +33,5 @@ echo \
 apt-get update
 
 
-apt install docker-compose
+apt install docker-compose-plugin
 ```
