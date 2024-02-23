@@ -27,18 +27,18 @@ services:
     networks:
       - network
   #PHP My Admin
-  phpmyadmin:
-    container_name: sql-inj-pma
-    image: phpmyadmin
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - "8081:80"
-    environment:
-      PMA_HOST: db
-    networks:
-      - network
+#  phpmyadmin:
+#    container_name: sql-inj-pma
+#    image: phpmyadmin
+#    restart: always
+#    depends_on:
+#      - db
+#    ports:
+#      - "8081:80"
+#    environment:
+#      PMA_HOST: db
+#    networks:
+#      - network
 volumes:
   caddy_data:
   caddy_config:
